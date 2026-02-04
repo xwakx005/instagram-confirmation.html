@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Confirmed • Instagram</title>
+    <style>
+        /* Instagram Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #fafafa;
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* Instagram Logo Font */
+        @font-face {
+            font-family: 'Billabong';
+            src: url('https://fonts.cdnfonts.com/s/13949/Billabong.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* Instagram Logo */
+        .instagram-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .instagram-logo h1 {
+            font-family: 'Billabong', cursive;
+            font-size: 60px;
+            font-weight: normal;
+            color: #262626;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        
+        /* Confirmation Card - Instagram Style */
+        .confirmation-card {
+            background: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Checkmark Circle - GREEN */
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50; /* Green color */
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .checkmark {
+            width: 35px;
+            height: 35px;
+            position: relative;
+        }
+        
+        .checkmark::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 30px;
+            border-right: 4px solid white;
+            border-bottom: 4px solid white;
+            transform: rotate(45deg);
+            left: 10px;
+            top: 0;
+        }
+        
+        /* Success Message */
+        .success-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 10px;
+        }
+        
+        .success-text {
+            color: #8e8e8e;
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 30px;
+        }
+        
+        /* Continue Button */
+        .continue-btn {
+            width: 100%;
+            background: #0095f6;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 15px;
+        }
+        
+        .continue-btn:hover {
+            background: #1877f2;
+        }
+        
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+        }
+        
+        .divider span {
+            padding: 0 18px;
+            text-transform: uppercase;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            color: #8e8e8e;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #00376b;
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .confirmation-card > * {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .checkmark-circle {
+            animation-delay: 0.2s;
+        }
+        
+        .success-title {
+            animation-delay: 0.4s;
+        }
+        
+        .success-text {
+            animation-delay: 0.6s;
+        }
+        
+        .continue-btn {
+            animation-delay: 0.8s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 450px) {
+            body {
+                background: white;
+                padding: 0;
+                align-items: flex-start;
+            }
+            
+            .confirmation-card {
+                border: none;
+                box-shadow: none;
+                padding: 40px 20px;
+                max-width: 100%;
+            }
+            
+            .instagram-logo h1 {
+                font-size: 50px;
+            }
+            
+            .checkmark-circle {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .checkmark {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .success-title {
+                font-size: 20px;
+            }
+            
+            .continue-btn {
+                padding: 14px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .instagram-logo h1 {
+                font-size: 45px;
+            }
+            
+            .checkmark-circle {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .checkmark {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .checkmark::before {
+                width: 12px;
+                height: 25px;
+                border-width: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-card">
+        <!-- Instagram Logo -->
+        <div class="instagram-logo">
+            <h1>Instagram</h1>
+        </div>
+        
+        <!-- Checkmark - Green -->
+        <div class="checkmark-circle">
+            <div class="checkmark"></div>
+        </div>
+        
+        <!-- Success Message -->
+        <h2 class="success-title">Account Confirmed</h2>
+        <p class="success-text">
+            Your Instagram account has been<br>
+            successfully verified and confirmed.
+        </p>
+        
+        <!-- Continue Button -->
+        <button class="continue-btn" onclick="window.location.href='https://www.instagram.com/'">
+            Continue to Instagram
+        </button>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-top: 15px; font-size: 11px; color: #c7c7c7;">
+                Instagram from Meta
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Instagram style animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating hearts animation
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '✅';
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = '20px';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.opacity = '0';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '9999';
+                    document.body.appendChild(heart);
+                    
+                    // Animate heart
+                    const animation = heart.animate([
+                        { 
+                            opacity: 0, 
+                            transform: 'translateY(0) scale(0.5)' 
+                        },
+                        { 
+                            opacity: 0.7, 
+                            transform: 'translateY(-20px) scale(1)' 
+                        },
+                        { 
+                            opacity: 0, 
+                            transform: 'translateY(-80px) scale(0.5)' 
+                        }
+                    ], {
+                        duration: 2000,
+                        easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                    });
+                    
+                    animation.onfinish = () => heart.remove();
+                }, i * 300);
+            }
+            
+            // Instagram notification sound effect
+            const playInstagramSound = () => {
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    // Success sound
+                    oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.1);
+                    oscillator.frequency.exponentialRampToValueAtTime(600, audioContext.currentTime + 0.2);
+                    
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.3);
+                } catch (e) {
+                    console.log('Audio not supported');
+                }
+            };
+            
+            // Play sound after 0.5 second
+            setTimeout(playInstagramSound, 500);
+        });
+    </script>
+</body>
+</html>
